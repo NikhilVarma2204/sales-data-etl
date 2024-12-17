@@ -4,13 +4,11 @@ import json
 import os
 from dotenv import load_dotenv
 
-load_dotenv('/Users/nikhilvarma/vsc/sales-data-anlysis/.env')
+load_dotenv()
 
 def write_to_bucket(data):
     s3 = boto3.client(
-        's3',
-        aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
-        aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY')
+        's3'
     )
     bucket_name = 'sales-transactions-bucket'
     object_key = f"transactions/2024/{data['transaction_id']}.json"
